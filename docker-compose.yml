@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+    backend:
+        build:
+          ./simple-api-student-main
+        networks:
+          - my-network
+        depends_on:
+         - database
+
+    database:
+        build:
+          ./database
+        networks:
+         - my-network
+        volumes:
+          - data_bis:/var/lib/postgresql/data
+
+    httpd:
+        build:
+          ./https
+        ports:
+          - 8080:80  
+        networks:
+          - my-network
+        depends_on:
+          - backend
+
+volumes:
+  data_bis:
+
+networks:
+    my-network:
