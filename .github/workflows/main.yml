@@ -55,7 +55,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./database
           # Note: tags has to be all lower-case
-          tags: ${{ secrets.DOCKER_USR }}/database:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/database:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
@@ -65,6 +65,6 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./https
           # Note: tags has to be all lower-case
-          tags: ${{ secrets.DOCKER_USR }}/xhttp_server:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/http_server:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
