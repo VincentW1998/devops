@@ -1,8 +1,9 @@
-- name: Run HTTPD
-  docker_container:
-    name: dv-httpd-1
-    image: shinichiv2/http_server:latest
-    networks:
-      - name: my_network
-    ports: 
-      - 80:80
+- name: Run HTTPD  # Tâche pour exécuter le conteneur HTTPD
+  docker_container:  # Utiliser le module docker_container d'Ansible
+    name: dv-httpd-1  # Nom du conteneur
+    image: shinichiv2/http_server:latest  # Nom de l'image Docker à utiliser
+    networks:  # Configuration du réseau du conteneur
+      - name: my_network  # Nom du réseau auquel le conteneur doit être connecté
+    ports:  # Configuration des ports du conteneur
+      - 80:80  # Faire correspondre le port 80 de l'hôte avec le port 80 du conteneur
+

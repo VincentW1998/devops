@@ -1,9 +1,10 @@
-- hosts: all
-  gather_facts: false
-  become: yes
-  roles:
-  - docker
-  - network
-  - proxy
-  - database
-  - app
+- hosts: all  # Jouer le playbook sur tous les hôtes du groupe "all"
+  gather_facts: false  # Désactiver la collecte des faits sur les hôtes (les informations sur les hôtes ne seront pas collectées)
+  become: yes  # Utiliser la méthode d'authentification "become" pour obtenir les privilèges d'administration
+
+  roles:  # Liste des rôles à exécuter
+    - docker  # Exécuter le rôle "docker"
+    - network  # Exécuter le rôle "network"
+    - proxy  # Exécuter le rôle "proxy"
+    - database  # Exécuter le rôle "database"
+    - app  # Exécuter le rôle "app"

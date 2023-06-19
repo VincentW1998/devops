@@ -1,7 +1,8 @@
-all:
- vars:
-   ansible_user: centos
-   ansible_ssh_private_key_file: /home/vincent/.ssh/id_rsa
- children:
-   prod:
-     hosts: vincentwei.98.takima.cloud
+all:  # Groupe de tous les hôtes
+  vars:  # Variables pour tous les hôtes
+    ansible_user: centos  # Nom d'utilisateur utilisé pour se connecter aux hôtes (centos dans ce cas)
+    ansible_ssh_private_key_file: /home/vincent/.ssh/id_rsa  # Chemin vers la clé privée SSH à utiliser pour la connexion
+
+  children:  # Groupes d'hôtes enfant
+    prod:  # Groupe d'hôtes "prod"
+      hosts: vincentwei.98.takima.cloud  # Liste des hôtes dans le groupe "prod" (un seul hôte ici)

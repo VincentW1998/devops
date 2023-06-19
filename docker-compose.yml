@@ -3,32 +3,32 @@ version: '3.7'
 services:
     backend:
         build:
-          ./simple-api-student-main
+          context: ./simple-api-student-main  # Répertoire contenant le Dockerfile du service backend
         networks:
-          - my-network
+          - my-network  # Connecte le service au réseau my-network
         depends_on:
-         - database
+         - database  # Attend que le service database soit démarré avant de démarrer le backend
 
     database:
         build:
-          ./database
+          context: ./database  # Répertoire contenant le Dockerfile du service database
         networks:
-         - my-network
+         - my-network  # Connecte le service au réseau my-network
         volumes:
-          - data_bis:/var/lib/postgresql/data
+          - data_bis:/var/lib/postgresql/data  # Montage du volume data_bis pour stocker les données de la base de données
 
     httpd:
         build:
-          ./https
+          context: ./https  # Répertoire contenant le Dockerfile du service httpd
         ports:
-          - 8080:80  
+          - 8080:80  # Mappe le port 8080 de l'hôte sur le port 80 du conteneur
         networks:
-          - my-network
+          - my-network  # Connecte le service au réseau my-network
         depends_on:
-          - backend
+          - backend  # Attend que le service backend soit démarré avant de démarrer httpd
 
 volumes:
-  data_bis:
+  data_bis:  # Définition du volume data_bis utilisé par le service database
 
 networks:
-    my-network:
+    my-network:  # Définition du réseau my-network utilisé par les services

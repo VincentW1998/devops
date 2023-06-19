@@ -1,35 +1,38 @@
-- name: Clean packages
-  command:
-    cmd: yum clean -y packages
+- name: Clean packages  # Tâche pour nettoyer les paquets
+  command:  # Utiliser la commande shell
+    cmd: yum clean -y packages  # Exécuter la commande "yum clean -y packages" pour nettoyer les paquets
 
-- name: Install device-mapper-persistent-data
-  yum:
-    name: device-mapper-persistent-data
-    state: latest
+- name: Install device-mapper-persistent-data  # Tâche pour installer device-mapper-persistent-data
+  yum:  # Utiliser le module yum d'Ansible
+    name: device-mapper-persistent-data  # Spécifier le nom du paquet à installer
+    state: latest  # S'assurer que le paquet est à la dernière version disponible
 
-- name: Install lvm2
-  yum:
-    name: lvm2
-    state: latest
+- name: Install lvm2  # Tâche pour installer lvm2
+  yum:  # Utiliser le module yum d'Ansible
+    name: lvm2  # Spécifier le nom du paquet à installer
+    state: latest  # S'assurer que le paquet est à la dernière version disponible
 
-- name: add repo docker
-  command:
-    cmd: sudo yum-config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+- name: add repo docker  # Tâche pour ajouter le référentiel Docker
+  command:  # Utiliser la commande shell
+    cmd: sudo yum-config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo  # Exécuter la commande "sudo yum-config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo" pour ajouter le référentiel Docker
 
-- name: Install Docker
-  yum:
-    name: docker-ce
-    state: present
+- name: Install Docker  # Tâche pour installer Docker
+  yum:  # Utiliser le module yum d'Ansible
+    name: docker-ce  # Spécifier le nom du paquet à installer
+    state: present  # S'assurer que le paquet est présent
 
-- name: install python3
-  yum:
-    name: python3
+- name: install python3  # Tâche pour installer Python 3
+  yum:  # Utiliser le module yum d'Ansible
+    name: python3  # Spécifier le nom du paquet à installer
 
-- name: Pip install
-  pip:
-    name: docker
-    executable: pip3
+- name: Pip install  # Tâche pour installer des packages Python avec pip
+  pip:  # Utiliser le module pip d'Ansible
+    name: docker  # Spécifier le nom du package à installer
+    executable: pip3  # Utiliser la version de pip3
 
-- name: Make sure Docker is running
-  service: name=docker state=started
-  tags: docker
+- name: Make sure Docker is running  # Tâche pour s'assurer que Docker est en cours d'exécution
+  service:  # Utiliser le module service d'Ansible
+    name: docker  # Spécifier le nom du service à gérer (docker)
+    state: started  # S'assurer que le service est démarré
+  tags: docker  # Ajouter l'étiquette "docker" pour pouvoir exécuter cette tâche en utilisant les tags
+

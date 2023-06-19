@@ -1,3 +1,3 @@
-- name: Create NETWORK
-  docker_network:
-    name: my_network
+- name: Create NETWORK  # Tâche pour créer le réseau
+  docker_network:  # Utiliser le module docker_network d'Ansible
+    name: my_network  # Nom du réseau à créer

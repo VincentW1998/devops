@@ -1,13 +1,14 @@
-- name: Run DATABASE
-  docker_container:
-    name: dv-database-1
-    state: started
-    image: shinichiv2/database
-    pull: true
-    networks:
-      - name: my_network
-    env:
-      POSTGRES_DB: db
-      POSTGRES_USER: usr
-      POSTGRES_PASSWORD: pwd
-    volumes: data_bis:/var/lib/postgresql/data
+- name: Run DATABASE  # Tâche pour exécuter le conteneur DATABASE
+  docker_container:  # Utiliser le module docker_container d'Ansible
+    name: dv-database-1  # Nom du conteneur
+    state: started  # État du conteneur (démarré)
+    image: shinichiv2/database  # Nom de l'image Docker à utiliser
+    pull: true  # Vérifier si une nouvelle version de l'image est disponible et la télécharger si nécessaire
+    networks:  # Configuration du réseau du conteneur
+      - name: my_network  # Nom du réseau auquel le conteneur doit être connecté
+    env:  # Variables d'environnement du conteneur
+      POSTGRES_DB: db  # Variable d'environnement pour la base de données PostgreSQL (db)
+      POSTGRES_USER: usr  # Variable d'environnement pour le nom d'utilisateur PostgreSQL (usr)
+      POSTGRES_PASSWORD: pwd  # Variable d'environnement pour le mot de passe PostgreSQL (pwd)
+    volumes: data_bis:/var/lib/postgresql/data  # Montage d'un volume pour stocker les données du conteneur
+

@@ -2,6 +2,7 @@ name: CI devops 2023 - Httpd and Database
 
 on:
   push:
+    # Push l'image seulement pour les branches main et develop
     branches:
       - main
 

@@ -1,8 +1,8 @@
-- name: Run APP
-  docker_container:
-    name: dv-backend-1
-    state: started
-    image: shinichiv2/simple-api
-    pull: true
-    networks:
-      - name: my_network
+- name: Run APP  # Tâche pour exécuter le conteneur APP
+  docker_container:  # Utiliser le module docker_container d'Ansible
+    name: dv-backend-1  # Nom du conteneur
+    state: started  # État du conteneur (démarré)
+    image: shinichiv2/simple-api  # Nom de l'image Docker à utiliser
+    pull: true  # Vérifier si une nouvelle version de l'image est disponible et la télécharger si nécessaire
+    networks:  # Configuration du réseau du conteneur
+      - name: my_network  # Nom du réseau auquel le conteneur doit être connecté
