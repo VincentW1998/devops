@@ -1,0 +1,3 @@
+- name: Create NETWORK
+  docker_network:
+    name: my_network

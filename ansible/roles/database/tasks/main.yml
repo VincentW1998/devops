@@ -1,0 +1,13 @@
+- name: Run DATABASE
+  docker_container:
+    name: dv-database-1
+    state: started
+    image: shinichiv2/database
+    pull: true
+    networks:
+      - name: my_network
+    env:
+      POSTGRES_DB: db
+      POSTGRES_USER: usr
+      POSTGRES_PASSWORD: pwd
+    volumes: data_bis:/var/lib/postgresql/data
